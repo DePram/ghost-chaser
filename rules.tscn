@@ -1,0 +1,200 @@
+[gd_scene load_steps=15 format=3 uid="uid://dxhxn2oetdunu"]
+
+[ext_resource type="Texture2D" uid="uid://cu13hsw777l1x" path="res://aset/rules/alert.png" id="1_blkye"]
+[ext_resource type="Script" path="res://rules.gd" id="1_ixeha"]
+[ext_resource type="Texture2D" uid="uid://dnf4fllmhe1yy" path="res://aset/rules/download-removebg-preview.png" id="3_xw04d"]
+[ext_resource type="Texture2D" uid="uid://bhdvbltxo2q3h" path="res://aset/rules/arrow_left-removebg-preview.png" id="4_3arkn"]
+[ext_resource type="Texture2D" uid="uid://cxluvk5loslet" path="res://aset/rules/keyboard_a-removebg-preview.png" id="5_pr8ph"]
+[ext_resource type="Texture2D" uid="uid://dv76mhe3gi53e" path="res://aset/rules/keyboard_s-removebg-preview.png" id="6_cjkwd"]
+[ext_resource type="Texture2D" uid="uid://c8orwqb40nn2b" path="res://aset/rules/arrow_down-removebg-preview.png" id="7_cw652"]
+[ext_resource type="Texture2D" uid="uid://b33s1x1qc2ktv" path="res://aset/rules/download-removebg-preview (1).png" id="8_6mm4d"]
+[ext_resource type="Texture2D" uid="uid://dne1ht2hntpwa" path="res://aset/rules/keyboard_key_d-removebg-preview.png" id="9_tciyv"]
+[ext_resource type="Texture2D" uid="uid://bbvp6pdp05h4s" path="res://aset/rules/keyboard_w-removebg-preview.png" id="10_x8px2"]
+[ext_resource type="AudioStream" uid="uid://cec45qngojfc0" path="res://aset/sound/click.mp3" id="11_6tmij"]
+
+[sub_resource type="Animation" id="Animation_ph1il"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-98, 225)]
+}
+
+[sub_resource type="Animation" id="Animation_o3clg"]
+resource_name = "scaleUp"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-98, 225), Vector2(-103, 225)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tyn2h"]
+_data = {
+"RESET": SubResource("Animation_ph1il"),
+"scaleUp": SubResource("Animation_o3clg")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(576, 324)
+script = ExtResource("1_ixeha")
+
+[node name="border" type="ColorRect" parent="."]
+offset_left = -546.0
+offset_top = -292.0
+offset_right = -181.0
+offset_bottom = -1.0
+scale = Vector2(3, 2)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(1, 0, 0, 1)
+
+[node name="container" type="ColorRect" parent="."]
+offset_left = -522.0
+offset_top = -264.0
+offset_right = -173.0
+offset_bottom = 89.0
+scale = Vector2(3, 1.5)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="container"]
+position = Vector2(96, 26.6667)
+metadata/_edit_group_ = true
+
+[node name="Alert" type="Sprite2D" parent="container/Node2D"]
+z_index = 1
+position = Vector2(12.6666, 4.66678)
+scale = Vector2(0.104, 0.2)
+texture = ExtResource("1_blkye")
+
+[node name="ColorRect" type="ColorRect" parent="container/Node2D"]
+offset_top = -15.0
+offset_right = 161.0
+offset_bottom = 25.0
+color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -99.1992
+offset_top = 225.0
+offset_right = 70.8008
+offset_bottom = 248.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "Press \"Space\" To Start"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+"": SubResource("AnimationLibrary_tyn2h")
+}
+autoplay = "scaleUp"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -154.0
+offset_top = -229.0
+offset_right = 237.0
+offset_bottom = -201.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Jangan main jika anda mudah ketakutan"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -291.0
+offset_top = -173.0
+offset_right = 300.0
+offset_bottom = 209.0
+theme_override_constants/line_spacing = 8
+theme_override_font_sizes/font_size = 22
+text = "1. Gunakan \"\"\" / \"\"\" untuk ke atas
+2. Gunakan \"\"\" / \"\"\" untuk ke kiri
+3. Gunakan \"\"\" / \"\"\" untuk ke bawah
+4. Gunakan \"\"\" / \"\"\" untuk ke kanan
+5. Ambil lilin sebanyak mungkin.
+    0 - 200 -> kupon 0                  201 - 600 -> kupon 100
+    601 - 1000 -> kupon 300       1001 -> 1090 -> kupon 500
+6. Jauhi hantu agar tidak dikejar
+7. Masuk ke air agar berpindah ke sisi lain
+8. Sembunyi di semak agar hantu berhenti mengejar"
+
+[node name="ArrowDown-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(-151, -155)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_xw04d")
+
+[node name="ArrowDown-removebg-preview3" type="Sprite2D" parent="."]
+position = Vector2(-151, -117)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_3arkn")
+
+[node name="ArrowDown-removebg-preview4" type="Sprite2D" parent="."]
+position = Vector2(-101, -116)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_pr8ph")
+
+[node name="ArrowDown-removebg-preview5" type="Sprite2D" parent="."]
+position = Vector2(-102, -77)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_cjkwd")
+
+[node name="ArrowDown-removebg-preview6" type="Sprite2D" parent="."]
+position = Vector2(-151, -78)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_cw652")
+
+[node name="ArrowDown-removebg-preview7" type="Sprite2D" parent="."]
+position = Vector2(-151, -38)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_6mm4d")
+
+[node name="ArrowDown-removebg-preview8" type="Sprite2D" parent="."]
+position = Vector2(-102, -38)
+scale = Vector2(0.045, 0.045)
+texture = ExtResource("9_tciyv")
+
+[node name="ArrowDown-removebg-preview2" type="Sprite2D" parent="."]
+position = Vector2(-102, -155)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_x8px2")
+
+[node name="clickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_6tmij")
+volume_db = -5.0

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvvttv6hswt8i"]
+
+[ext_resource type="VideoStream" path="res://aset/jumpscare/DogDay_Jumpscare.ogv" id="1_k4r78"]
+[ext_resource type="AudioStream" uid="uid://mkvtv0jb7j80" path="res://aset/jumpscare/final_60108db6919bc200b087a3a2_239343.mp3" id="2_itun2"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+offset_left = 3.05176e-05
+offset_top = 2.00002
+offset_right = 480.0
+offset_bottom = 274.0
+scale = Vector2(2.4, 2.4)
+stream = ExtResource("1_k4r78")
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_itun2")

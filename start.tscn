@@ -1,0 +1,205 @@
+[gd_scene load_steps=19 format=3 uid="uid://dl3koe4sav8xt"]
+
+[ext_resource type="Script" path="res://start.gd" id="1_23r6g"]
+[ext_resource type="FontFile" uid="uid://oi4xv6ciyiti" path="res://font/Rubik_Iso/RubikIso-Regular.ttf" id="1_kfype"]
+[ext_resource type="AudioStream" uid="uid://8xrkbn86qa35" path="res://aset/sound/Theme song.mp3" id="3_1k4su"]
+[ext_resource type="Texture2D" uid="uid://6h041xf8l4ry" path="res://aset/furnitur/tombstone-removebg-preview.png" id="3_mmx0p"]
+[ext_resource type="AudioStream" uid="uid://cec45qngojfc0" path="res://aset/sound/click.mp3" id="4_yp4d3"]
+[ext_resource type="Texture2D" uid="uid://c0j8bctlhbwwi" path="res://aset/furnitur/banner2-removebg-preview.png" id="6_qcvio"]
+[ext_resource type="Texture2D" uid="uid://c2vu8im3biw0j" path="res://aset/furnitur/banner-removebg-preview.png" id="7_ncegr"]
+[ext_resource type="Texture2D" uid="uid://d0sy7l3v136tx" path="res://aset/furnitur/cross-removebg-preview.png" id="8_fbwxh"]
+[ext_resource type="Texture2D" uid="uid://uttupnixddbu" path="res://aset/furnitur/statue2-removebg-preview.png" id="9_i3y6c"]
+[ext_resource type="Texture2D" uid="uid://0s7xsdldcrms" path="res://aset/furnitur/bush2.png" id="10_h1jp4"]
+[ext_resource type="Texture2D" uid="uid://ca8wili2qwlde" path="res://aset/furnitur/Vines-removebg-preview.png" id="11_3a72w"]
+[ext_resource type="Texture2D" uid="uid://b4ck6c6qfk5kf" path="res://aset/furnitur/Web6.png" id="12_1hclf"]
+[ext_resource type="Texture2D" uid="uid://brvcouub7pgt2" path="res://aset/2 Animated objects/Pumpkin3.png" id="13_7x0v3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmbxx"]
+bg_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rplvd"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_sbm4n"]
+resource_name = "pumpkin"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 2.63901, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_jx8wd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54ca8"]
+_data = {
+"RESET": SubResource("Animation_jx8wd"),
+"pumpkin": SubResource("Animation_sbm4n")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(576, 324)
+script = ExtResource("1_23r6g")
+
+[node name="border" type="ColorRect" parent="."]
+offset_left = -418.0
+offset_top = -219.0
+offset_right = -129.0
+offset_bottom = 41.0
+scale = Vector2(3, 1.5)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(1, 0, 0, 1)
+
+[node name="container" type="ColorRect" parent="."]
+offset_left = -410.0
+offset_top = -212.0
+offset_right = -127.0
+offset_bottom = 38.0
+scale = Vector2(3, 1.5)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="container"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 123.333
+offset_right = 197.0
+offset_bottom = 178.333
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_kfype")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fmbxx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rplvd")
+text = "START GAME"
+
+[node name="Label2" type="Label" parent="container"]
+layout_mode = 0
+offset_left = 9.66667
+offset_top = 56.6667
+offset_right = 277.667
+offset_bottom = 97.6667
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_kfype")
+theme_override_font_sizes/font_size = 33
+text = "GHOST CHASER"
+
+[node name="Tombstone-removebg-preview2" type="Sprite2D" parent="container"]
+position = Vector2(404, 145)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_mmx0p")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -85.0
+offset_top = 92.0
+offset_right = 85.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "Press \"Space\" To Start"
+
+[node name="themeSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1k4su")
+parameters/looping = true
+
+[node name="clickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yp4d3")
+volume_db = -5.0
+
+[node name="Banner2-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(-371, -160)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_qcvio")
+
+[node name="Banner-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(-316, -159)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_ncegr")
+
+[node name="Cross-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(308, 132)
+scale = Vector2(2, 2)
+texture = ExtResource("8_fbwxh")
+
+[node name="Tombstone-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(342, 143)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_mmx0p")
+
+[node name="Tombstone-removebg-preview2" type="Sprite2D" parent="."]
+position = Vector2(-188, 143)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_mmx0p")
+
+[node name="Statue2-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(-345, 105)
+texture = ExtResource("9_i3y6c")
+
+[node name="Bush2" type="Sprite2D" parent="."]
+position = Vector2(-377, 134)
+texture = ExtResource("10_h1jp4")
+
+[node name="Bush3" type="Sprite2D" parent="."]
+position = Vector2(-328, 146.5)
+scale = Vector2(0.84375, 0.703125)
+texture = ExtResource("10_h1jp4")
+
+[node name="Vines-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(325, -180)
+scale = Vector2(2, 2)
+texture = ExtResource("11_3a72w")
+
+[node name="Vines-removebg-preview2" type="Sprite2D" parent="."]
+position = Vector2(325, -133)
+scale = Vector2(2, 2)
+texture = ExtResource("11_3a72w")
+
+[node name="Vines-removebg-preview3" type="Sprite2D" parent="."]
+position = Vector2(325, -87)
+scale = Vector2(2, 2)
+texture = ExtResource("11_3a72w")
+
+[node name="Vines-removebg-preview4" type="Sprite2D" parent="."]
+position = Vector2(273, -180)
+scale = Vector2(2, 2)
+texture = ExtResource("11_3a72w")
+
+[node name="Web6" type="Sprite2D" parent="."]
+position = Vector2(-161, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("12_1hclf")
+
+[node name="Pumpkin3" type="Sprite2D" parent="."]
+position = Vector2(165, 42)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("13_7x0v3")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pumpkin3"]
+libraries = {
+"": SubResource("AnimationLibrary_54ca8")
+}
+autoplay = "pumpkin"
+
+[connection signal="mouse_entered" from="container/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="container/Button" to="." method="_on_button_pressed"]

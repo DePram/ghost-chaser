@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcx5a8cbvi6db"]
+
+[ext_resource type="VideoStream" path="res://aset/jumpscare/Doors_A_60_jumpscare.ogv" id="1_jbm1x"]
+[ext_resource type="AudioStream" uid="uid://c65im4yi6bgod" path="res://aset/jumpscare/fnaf-6-jumpscare-sound-effect.mp3" id="2_urkja"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+offset_left = 3.05176e-05
+offset_top = 2.00002
+offset_right = 480.0
+offset_bottom = 274.0
+scale = Vector2(3.7, 3.7)
+stream = ExtResource("1_jbm1x")
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_urkja")

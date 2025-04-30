@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbvuk74eb6i51"
+path="res://.godot/imported/poin .mp3-55c9e2d8185e60917e5ba3b2c271017d.mp3str"
+
+[deps]
+
+source_file="res://aset/sound/poin .mp3"
+dest_files=["res://.godot/imported/poin .mp3-55c9e2d8185e60917e5ba3b2c271017d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

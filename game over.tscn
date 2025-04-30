@@ -1,0 +1,208 @@
+[gd_scene load_steps=16 format=3 uid="uid://cm0ujmwponmk2"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_f2jsk"]
+[ext_resource type="FontFile" uid="uid://oi4xv6ciyiti" path="res://font/Rubik_Iso/RubikIso-Regular.ttf" id="2_47ae4"]
+[ext_resource type="AudioStream" uid="uid://cec45qngojfc0" path="res://aset/sound/click.mp3" id="3_f6wxp"]
+[ext_resource type="Texture2D" uid="uid://buead0r7tgpdn" path="res://aset/2 Animated objects/Pumpkin1.png" id="4_0fvn2"]
+[ext_resource type="Texture2D" uid="uid://c0j8bctlhbwwi" path="res://aset/furnitur/banner2-removebg-preview.png" id="5_lalba"]
+[ext_resource type="Texture2D" uid="uid://b3bjjguuk3p5y" path="res://aset/furnitur/fence-removebg-preview.png" id="6_m86l6"]
+[ext_resource type="Texture2D" uid="uid://0s7xsdldcrms" path="res://aset/furnitur/bush2.png" id="7_aihm2"]
+[ext_resource type="Texture2D" uid="uid://0d3nhl27ypwq" path="res://aset/furnitur/Web4.png" id="8_yqn6r"]
+[ext_resource type="Texture2D" uid="uid://bowe1hswif7pn" path="res://aset/furnitur/Spider1.png" id="9_o2lkb"]
+[ext_resource type="Texture2D" uid="uid://b4ck6c6qfk5kf" path="res://aset/furnitur/Web6.png" id="10_52nj3"]
+[ext_resource type="Texture2D" uid="uid://c1q68nh0g25xw" path="res://aset/furnitur/skulls-removebg-preview.png" id="11_la81j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl54o"]
+bg_color = Color(0.745098, 0.745098, 0.745098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_bskbl"]
+resource_name = "pumpkin"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_lm6bu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5hp3"]
+_data = {
+"RESET": SubResource("Animation_lm6bu"),
+"pumpkin": SubResource("Animation_bskbl")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(576, 324)
+script = ExtResource("1_f2jsk")
+
+[node name="border" type="ColorRect" parent="."]
+offset_left = -418.0
+offset_top = -215.0
+offset_right = -129.0
+offset_bottom = 45.0
+scale = Vector2(3, 1.5)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(1, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="container" type="ColorRect" parent="."]
+offset_left = -410.0
+offset_top = -212.0
+offset_right = -127.0
+offset_bottom = 38.0
+scale = Vector2(3, 1.5)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -82.5
+offset_right = 99.5
+offset_bottom = -41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_47ae4")
+theme_override_font_sizes/font_size = 33
+text = "GAME OVER"
+
+[node name="score" type="Label" parent="container"]
+layout_mode = 0
+offset_left = 106.667
+offset_top = 102.0
+offset_right = 170.667
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "SCORE : "
+
+[node name="Button" type="Button" parent="."]
+offset_left = -103.0
+offset_top = 38.0
+offset_right = 108.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_47ae4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_cl54o")
+text = "OK"
+
+[node name="clickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f6wxp")
+volume_db = -5.0
+
+[node name="Pumpkin1" type="Sprite2D" parent="."]
+position = Vector2(-314, 135)
+scale = Vector2(3, 3)
+texture = ExtResource("4_0fvn2")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pumpkin1"]
+libraries = {
+"": SubResource("AnimationLibrary_u5hp3")
+}
+autoplay = "pumpkin"
+
+[node name="Banner2-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(370, -132)
+scale = Vector2(2, 2)
+texture = ExtResource("5_lalba")
+
+[node name="Fence-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(186.5, 121)
+scale = Vector2(3, 3)
+texture = ExtResource("6_m86l6")
+
+[node name="Fence-removebg-preview2" type="Sprite2D" parent="."]
+position = Vector2(186.5, 121)
+scale = Vector2(3, 3)
+texture = ExtResource("6_m86l6")
+offset = Vector2(15, 0)
+
+[node name="Fence-removebg-preview3" type="Sprite2D" parent="."]
+position = Vector2(186.5, 121)
+scale = Vector2(3, 3)
+texture = ExtResource("6_m86l6")
+offset = Vector2(30, 0)
+
+[node name="Fence-removebg-preview4" type="Sprite2D" parent="."]
+position = Vector2(186.5, 121)
+scale = Vector2(3, 3)
+texture = ExtResource("6_m86l6")
+offset = Vector2(45, 0)
+
+[node name="Fence-removebg-preview5" type="Sprite2D" parent="."]
+position = Vector2(186.5, 121)
+scale = Vector2(3, 3)
+texture = ExtResource("6_m86l6")
+offset = Vector2(60, 0)
+
+[node name="Fence-removebg-preview6" type="Sprite2D" parent="."]
+position = Vector2(186.5, 121)
+scale = Vector2(3, 3)
+texture = ExtResource("6_m86l6")
+offset = Vector2(75, 0)
+
+[node name="Bush2" type="Sprite2D" parent="."]
+position = Vector2(406, 133)
+texture = ExtResource("7_aihm2")
+
+[node name="Bush3" type="Sprite2D" parent="."]
+position = Vector2(347, 133)
+texture = ExtResource("7_aihm2")
+
+[node name="Web4" type="Sprite2D" parent="."]
+position = Vector2(-382, -172)
+scale = Vector2(3, 3)
+texture = ExtResource("8_yqn6r")
+
+[node name="Spider1" type="Sprite2D" parent="."]
+position = Vector2(-394, -175)
+texture = ExtResource("9_o2lkb")
+
+[node name="Web6" type="Sprite2D" parent="."]
+position = Vector2(-303, -187)
+scale = Vector2(3, 3)
+texture = ExtResource("10_52nj3")
+
+[node name="Skulls-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(-377, 119)
+scale = Vector2(3, 3)
+texture = ExtResource("11_la81j")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

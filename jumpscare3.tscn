@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b57dyjo7sp7x3"]
+
+[ext_resource type="VideoStream" path="res://aset/jumpscare/fnaf-memes.ogv" id="1_wmb6i"]
+[ext_resource type="AudioStream" uid="uid://bxrjdd57baqoe" path="res://aset/jumpscare/loud-jumpscare-scream.mp3" id="2_dm42o"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+offset_left = 3.05176e-05
+offset_top = 2.00002
+offset_right = 480.0
+offset_bottom = 274.0
+scale = Vector2(5, 5)
+stream = ExtResource("1_wmb6i")
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dm42o")

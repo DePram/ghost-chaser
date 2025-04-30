@@ -1,0 +1,5853 @@
+[gd_scene load_steps=33 format=3 uid="uid://c7yobxweqbs1p"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_lh63r"]
+[ext_resource type="FontFile" uid="uid://oi4xv6ciyiti" path="res://font/Rubik_Iso/RubikIso-Regular.ttf" id="1_sso43"]
+[ext_resource type="Texture2D" uid="uid://1oucpiswtjhn" path="res://aset/candle.png" id="2_jk4cm"]
+[ext_resource type="PackedScene" uid="uid://d2esij33bgx8k" path="res://player.tscn" id="3_0o5vs"]
+[ext_resource type="Texture2D" uid="uid://b3v6s2jhhhsu4" path="res://aset/heart.png" id="5_lkndp"]
+[ext_resource type="Texture2D" uid="uid://b0jijwrip8shp" path="res://aset/ghost/ghost.png" id="6_h1gvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvhmw"]
+size = Vector2(525, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nui7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb2qh"]
+size = Vector2(525, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bddsn"]
+size = Vector2(25, 175)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqggn"]
+size = Vector2(100, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0txe8"]
+size = Vector2(25, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg6w7"]
+size = Vector2(75, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj4ur"]
+size = Vector2(75, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7dj"]
+size = Vector2(25, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc88j"]
+size = Vector2(25, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tc374"]
+
+[sub_resource type="Animation" id="Animation_lw62x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0qkow"]
+resource_name = "move_candle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(13.4544, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7aspy"]
+_data = {
+"RESET": SubResource("Animation_lw62x"),
+"move_candle": SubResource("Animation_0qkow")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8u3a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8ojq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ay3o3"]
+
+[sub_resource type="Animation" id="Animation_bmuy3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(690, 368)]
+}
+
+[sub_resource type="Animation" id="Animation_648sa"]
+resource_name = "ghost"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.433333, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 4]
+}
+
+[sub_resource type="Animation" id="Animation_47bik"]
+resource_name = "ghostLane"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 9, 12.0333, 14),
+"transitions": PackedFloat32Array(0.366022, 0.366022, 0.366022, 0.366022, 1, 1, 1),
+"update": 0,
+"values": [Vector2(690, 368), Vector2(653, 363), Vector2(616, 371), Vector2(629, 322), Vector2(690, 314), Vector2(765, 322), Vector2(732, 363)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y77ro"]
+_data = {
+"RESET": SubResource("Animation_bmuy3"),
+"ghost": SubResource("Animation_648sa"),
+"ghostLane": SubResource("Animation_47bik")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xr7d1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_irs6s"]
+radius = 13.5874
+
+[sub_resource type="Animation" id="Animation_74a62"]
+resource_name = "ghostLane"
+length = 16.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 6, 7, 8, 9, 10, 11, 14, 15, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(690, 368), Vector2(666, 363), Vector2(641, 377), Vector2(616, 368), Vector2(641, 314), Vector2(666, 328), Vector2(690, 314), Vector2(715, 328), Vector2(740, 314), Vector2(765, 330), Vector2(740, 376), Vector2(715, 363), Vector2(690, 368)]
+}
+
+[sub_resource type="Animation" id="Animation_bj4ws"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(690, 368)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sp75i"]
+_data = {
+"RESET": SubResource("Animation_bj4ws"),
+"ghostLane": SubResource("Animation_74a62")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lh63r")
+speed = null
+ghostSpeed = null
+
+[node name="Game name" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 47.0
+offset_right = 365.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_sso43")
+theme_override_font_sizes/font_size = 75
+text = "GHOST
+CHASER"
+
+[node name="arena" type="StaticBody2D" parent="." groups=["wall"]]
+collision_layer = 2
+
+[node name="wall" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(690, 46.75)
+shape = SubResource("RectangleShape2D_uvhmw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615105, 0.250007)
+rotation = 3.14159
+scale = Vector2(521.77, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-0.615105, 0.250008)
+rotation = 3.14159
+scale = Vector2(511, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall2" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(690, 602.5)
+shape = SubResource("RectangleShape2D_xb2qh")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall2"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615167, -0.0644118)
+rotation = 3.14159
+scale = Vector2(521.77, 36.9425)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall2"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.615105, 0.250008)
+rotation = 3.14159
+scale = Vector2(511, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall3" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(440, 147)
+shape = SubResource("RectangleShape2D_bddsn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall3"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615105, 0.250007)
+rotation = 3.14159
+scale = Vector2(25, 175)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall3"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -12.4375)
+rotation = 3.14159
+scale = Vector2(15, 190.125)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall4" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(938, 147)
+shape = SubResource("RectangleShape2D_bddsn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall4"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615105, 0.250007)
+rotation = 3.14159
+scale = Vector2(25, 175)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall4"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -12.4375)
+rotation = 3.14159
+scale = Vector2(15, 190.125)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall5" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(501, 222)
+shape = SubResource("RectangleShape2D_sqggn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall5"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(104.943, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall5"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-2.79054, -2.43957e-07)
+rotation = 3.14159
+scale = Vector2(101.419, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall6" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(877, 222)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_sqggn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall6"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(104.943, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall6"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.00001, 3.67177e-07)
+rotation = 3.14159
+scale = Vector2(101.419, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall7" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(540, 247)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall7"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall7"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.709431, -1.81935e-07)
+rotation = 3.14159
+scale = Vector2(16.4189, 65)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall8" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(838, 247)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall8"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall8"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.709431, -1.81935e-07)
+rotation = 3.14159
+scale = Vector2(16.4189, 65)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall9" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(904, 270)
+shape = SubResource("RectangleShape2D_sqggn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall9"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(104.943, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall9"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-4.58113, -4.00495e-07)
+rotation = 3.14159
+scale = Vector2(105, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall10" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(479, 270)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_sqggn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall10"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(104.943, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall10"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.00001, 3.67177e-07)
+rotation = 3.14159
+scale = Vector2(101.419, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall11" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(439, 296)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall11"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall11"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.709431, 0.499971)
+rotation = 3.14159
+scale = Vector2(16.4189, 64.0001)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall12" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(943.5, 297)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall12"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall12"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.709431, -1.81935e-07)
+rotation = 3.14159
+scale = Vector2(16.4189, 65)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall13" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(501, 322)
+shape = SubResource("RectangleShape2D_sqggn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall13"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(104.943, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall13"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.00001, 3.67177e-07)
+rotation = 3.14159
+scale = Vector2(101.419, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall14" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(880, 324)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_sqggn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall14"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(104.943, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall14"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-4.58113, -4.00495e-07)
+rotation = 3.14159
+scale = Vector2(105, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall15" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(540, 368)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall15"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall15"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.709432, -11)
+rotation = 3.14159
+scale = Vector2(16.4189, 87)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall16" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(841, 368)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall16"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall16"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.709432, -11)
+rotation = 3.14159
+scale = Vector2(16.4189, 87)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall17" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(479, 393)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_sqggn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall17"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(104.943, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall17"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.00001, 3.67177e-07)
+rotation = 3.14159
+scale = Vector2(101.419, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall18" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(904, 393)
+shape = SubResource("RectangleShape2D_sqggn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall18"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(104.943, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall18"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-5.40515, 1.68854e-06)
+rotation = 3.14159
+scale = Vector2(103.352, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall19" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(441, 497)
+shape = SubResource("RectangleShape2D_bddsn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall19"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615114, -3.37464)
+rotation = 3.14159
+scale = Vector2(25, 182.249)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall19"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-1.21845e-06, 1.49997)
+rotation = 3.14159
+scale = Vector2(15, 218)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall20" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(941, 493)
+shape = SubResource("RectangleShape2D_bddsn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall20"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615054, 20.3281)
+rotation = 3.14159
+scale = Vector2(25, 215.156)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall20"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.69289, 4.87462)
+rotation = 3.14159
+scale = Vector2(16.3858, 224.749)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall21" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(690, 147)
+shape = SubResource("RectangleShape2D_bddsn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall21"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615105, 0.250007)
+rotation = 3.14159
+scale = Vector2(25, 175)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall21"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(3.33301e-07, -16.25)
+rotation = 3.14159
+scale = Vector2(15, 182.5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall23" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(515, 171)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall23"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall23"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall24" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(515, 108)
+shape = SubResource("RectangleShape2D_jj4ur")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall24"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+rotation = -3.14159
+scale = Vector2(60, 35)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall24"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="arena/wall24"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+z_index = 3
+position = Vector2(15, 0)
+rotation = 3.14159
+scale = Vector2(5, 5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="arena/wall24"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+z_index = 3
+position = Vector2(-14, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(5, 5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall25" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(615, 108)
+shape = SubResource("RectangleShape2D_jj4ur")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall25"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+rotation = -3.14159
+scale = Vector2(60, 35)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall25"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="arena/wall25"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+z_index = 3
+position = Vector2(15, 0)
+rotation = 3.14159
+scale = Vector2(5, 5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="arena/wall25"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+z_index = 3
+position = Vector2(-14, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(5, 5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall26" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(765, 108)
+shape = SubResource("RectangleShape2D_jj4ur")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall26"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+rotation = -3.14159
+scale = Vector2(60, 35)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall26"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="arena/wall26"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+z_index = 3
+position = Vector2(15, 0)
+rotation = 3.14159
+scale = Vector2(5, 5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="arena/wall26"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+z_index = 3
+position = Vector2(-14, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(5, 5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall27" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(865, 108)
+shape = SubResource("RectangleShape2D_jj4ur")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall27"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+rotation = -3.14159
+scale = Vector2(60, 35)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall27"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="arena/wall27"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+z_index = 3
+position = Vector2(15, 0)
+rotation = 3.14159
+scale = Vector2(5, 5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="arena/wall27"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+z_index = 3
+position = Vector2(-14, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(5, 5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall28" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(865, 171)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall28"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall28"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall29" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(590, 221)
+shape = SubResource("RectangleShape2D_fj7dj")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall29"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 125)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall29"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.499964, 1)
+rotation = 3.14159
+scale = Vector2(15.9999, 115)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall30" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(615, 221)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall30"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall30"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall31" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(715, 171)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall31"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall31"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall32" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(666, 171)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall32"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall32"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall33" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(790, 221)
+shape = SubResource("RectangleShape2D_fj7dj")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall33"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-1.02874, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 125)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall33"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.499964, 1)
+rotation = 3.14159
+scale = Vector2(15.9999, 115)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall34" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(765, 221)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall34"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall34"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall22" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(590, 345)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall22"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall22"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.709431, 0.499971)
+rotation = 3.14159
+scale = Vector2(16.4189, 64.0001)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall35" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(790, 345)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall35"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall35"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(0.709431, 0.499971)
+rotation = 3.14159
+scale = Vector2(16.4189, 64.0001)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall36" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(640, 285)
+shape = SubResource("RectangleShape2D_nc88j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall36"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall36"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.290588, 0.499969)
+rotation = 3.14159
+scale = Vector2(16.419, 40)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall37" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(652, 273)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_nc88j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall37"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall37"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.290588, 0.499969)
+rotation = 3.14159
+scale = Vector2(16.419, 40)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall38" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(740, 285)
+shape = SubResource("RectangleShape2D_nc88j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall38"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall38"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.290588, 0.499969)
+rotation = 3.14159
+scale = Vector2(16.419, 40)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall39" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(729, 273)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_nc88j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall39"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall39"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.290588, 0.499969)
+rotation = 3.14159
+scale = Vector2(16.419, 40)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall40" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(652, 347)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_nc88j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall40"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall40"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.290588, 0.499969)
+rotation = 3.14159
+scale = Vector2(16.419, 40)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall41" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(729, 347)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_nc88j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall41"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall41"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.290588, 0.499969)
+rotation = 3.14159
+scale = Vector2(16.419, 40)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall42" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(615, 445)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall42"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall42"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall43" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(715, 395)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall43"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall43"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall44" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(666, 395)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall44"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall44"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(2.00029, -7.60628e-06)
+rotation = 3.14159
+scale = Vector2(71.0006, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall45" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(765, 445)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall45"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall45"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall46" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(690, 470)
+shape = SubResource("RectangleShape2D_bddsn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall46"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615105, 0.250007)
+rotation = 3.14159
+scale = Vector2(25, 175)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall46"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(3.20232e-05, -3.74997)
+rotation = 3.14159
+scale = Vector2(15, 157.5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall47" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(715, 495)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall47"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall47"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall48" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(666, 495)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall48"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall48"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(2.00029, -7.60628e-06)
+rotation = 3.14159
+scale = Vector2(71.0006, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall49" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(453, 495)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_nc88j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall49"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall49"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.290593, -1.50231)
+rotation = 3.14159
+scale = Vector2(16.419, 35.9954)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall50" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(929, 495)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_nc88j")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall50"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 50)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall50"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-0.290588, 0.499969)
+rotation = 3.14159
+scale = Vector2(16.419, 40)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall51" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(540, 470)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall51"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall51"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(0.709431, 0.499971)
+rotation = 3.14159
+scale = Vector2(16.4189, 64.0001)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall52" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(840, 470)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall52"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall52"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(0.709431, 0.499971)
+rotation = 3.14159
+scale = Vector2(16.4189, 64.0001)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall53" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(865, 445)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall53"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall53"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-0.50006, -1.26744e-06)
+rotation = 3.14159
+scale = Vector2(64.0001, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall54" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(515, 445)
+shape = SubResource("RectangleShape2D_kg6w7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall54"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(75, 25)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall54"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1, 0)
+rotation = 3.14159
+scale = Vector2(65, 15)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall55" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(590, 520)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall55"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall55"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(0.709431, 0.499971)
+rotation = 3.14159
+scale = Vector2(16.4189, 64.0001)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall56" type="CollisionShape2D" parent="arena" groups=["wall"]]
+z_index = -1
+position = Vector2(790, 520)
+shape = SubResource("RectangleShape2D_0txe8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall56"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(8.10623e-06, -2.38948e-07)
+rotation = 3.14159
+scale = Vector2(25, 75)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall56"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(0.709431, 0.499971)
+rotation = 3.14159
+scale = Vector2(16.4189, 64.0001)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall57" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(815, 546)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_bddsn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall57"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615105, 0.250007)
+rotation = 3.14159
+scale = Vector2(25, 175)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall57"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(3.20232e-05, -3.74997)
+rotation = 3.14159
+scale = Vector2(15, 157.5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="wall58" type="CollisionShape2D" parent="arena" groups=["wall"]]
+position = Vector2(565, 546)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_bddsn")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="arena/wall58"]
+modulate = Color(0.188235, 0, 0.658824, 1)
+position = Vector2(-0.615105, 0.250007)
+rotation = 3.14159
+scale = Vector2(25, 175)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="arena/wall58"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(3.20232e-05, -3.74997)
+rotation = 3.14159
+scale = Vector2(15, 157.5)
+mesh = SubResource("BoxMesh_nui7m")
+
+[node name="poins" type="Node2D" parent="."]
+position = Vector2(428, 35)
+
+[node name="poin" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(38, 63)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin49" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(262, 238)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin49"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin49"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin49/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin2" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(62.5, 37.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin2"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_a8u3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin2"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin2/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin3" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(87.5, 37.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin3"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_k8ojq")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin3"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin3/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin4" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(112.5, 37.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin4"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_k8ojq")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin4"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin4/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin5" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 37.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin5"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_ay3o3")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin5"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin5/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin6" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(162.5, 37.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin6"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin6"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin6/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin7" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187.5, 37.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin7"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin7"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin7/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin8" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(212.5, 37.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin8"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin8"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin8/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin9" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(237.5, 37.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin9"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin9"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin9/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin10" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(37.5, 87.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin10"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin10"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin10/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="Area2D" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(37.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/Area2D"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/Area2D"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/Area2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin11" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(37.5, 137.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin11"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin11"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin11/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin12" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(37.5, 162.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin12"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin12"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin12/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin13" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(62.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin13"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin13"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin13/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin14" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(87.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin14"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin14"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin14/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin15" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(112.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin15"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin15"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin15/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin16" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin16"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin16"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin16/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin17" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 87.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin17"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin17"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin17/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin18" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 62.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin18"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin18"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin18/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin19" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(162.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin19"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin19"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin19/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin20" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin20"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin20"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin20/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin21" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(212.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin21"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin21"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin21/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin22" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(237.5, 112.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin22"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin22"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin22/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin23" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(237.5, 87.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin23"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin23"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin23/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin24" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(237.5, 62.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin24"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin24"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin24/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin25" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(112.5, 162.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin25"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin25"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin25/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin26" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(87.5, 162.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin26"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin26"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin26/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin27" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(62.5, 162.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin27"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin27"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin27/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin28" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 162.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin28"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin28"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin28/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin29" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 137.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin29"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin29"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin29/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin30" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(212.5, 162.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin30"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin30"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin30/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin31" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187.5, 162.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin31"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin31"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin31/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin32" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187.5, 137.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin32"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin32"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin32/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin33" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(237.5, 162.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin33"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin33"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin33/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin34" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(237.5, 187.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin34"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin34"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin34/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin35" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 187.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin35"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin35"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin35/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin36" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 212.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin36"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin36"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin36/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin37" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 237.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin37"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin37"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin37/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin38" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(37.5, 262.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin38"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin38"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin38/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin39" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(62.5, 262.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin39"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin39"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin39/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin40" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(87.5, 262.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin40"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin40"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin40/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin41" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(112.5, 262.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin41"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin41"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin41/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin42" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(137.5, 262.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin42"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin42"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin42/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin43" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(162.5, 262.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin43"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin43"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin43/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin44" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187.5, 262.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin44"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin44"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin44/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin45" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187.5, 237.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin45"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin45"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin45/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="Area2D2" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187.5, 212.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/Area2D2"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/Area2D2"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/Area2D2/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin47" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(212.5, 212.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin47"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin47"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin47/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin46" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(237.5, 212.5)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin46"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin46"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin46/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="poin48" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/poin48"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/poin48"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/poin48/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(188, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(262, 213)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D2"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D2"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D2/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(262, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D3"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D3"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D3/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D4"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D4"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D4/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D5"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D5"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D5/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(213, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D6"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D6"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D6/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 310)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D7"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D7"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D7/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 333)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D8"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D8"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D8/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 360)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D9"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D9"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D9/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D35" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(163, 360)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D35"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D35"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D35/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D36" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(163, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D36"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D36"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D36/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D37" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(188, 310)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D37"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D37"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D37/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D38" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(188, 335)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D38"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D38"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D38/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D39" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(188, 360)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D39"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D39"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D39/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D40" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(188, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D40"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D40"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D40/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D41" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(213, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D41"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D41"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D41/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D42" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D42"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D42"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D42/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D45" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 410)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D45"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D45"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D45/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D46" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D46"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D46"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D46/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D47" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(213, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D47"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D47"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D47/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D48" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(188, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D48"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D48"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D48/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D49" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(163, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D49"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D49"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D49/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D50" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187, 462)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D50"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D50"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D50/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D51" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D51"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D51"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D51/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D52" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(213, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D52"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D52"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D52/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D53" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D53"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D53"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D53/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D54" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 512)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D54"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D54"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D54/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D55" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D55"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D55"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D55/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D59" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(262, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D59"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D59"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D59/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D60" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D60"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D60"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D60/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D83" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D83"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D83"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D83/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D84" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D84"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D84"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D84/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D111" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(362, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D111"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D111"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D111/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D112" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D112"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D112"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D112/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D123" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 462)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D123"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D123"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D123/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D124" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 462)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D124"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D124"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D124/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D125" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 462)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D125"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D125"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D125/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D113" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D113"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D113"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D113/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D114" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(413, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D114"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D114"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D114/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D115" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D115"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D115"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D115/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D116" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D116"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D116"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D116/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D117" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D117"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D117"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D117/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D118" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 512)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D118"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D118"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D118/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D119" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D119"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D119"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D119/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D120" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D120"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D120"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D120/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D121" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D121"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D121"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D121/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D122" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(413, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D122"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D122"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D122/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D61" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 512)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D61"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D61"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D61/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D62" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D62"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D62"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D62/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D63" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D63"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D63"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D63/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D64" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D64"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D64"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D64/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D65" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 462)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D65"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D65"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D65/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D66" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 437)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D66"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D66"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D66/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D110" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(362, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D110"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D110"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D110/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D126" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D126"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D126"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D126/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D127" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 437)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D127"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D127"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D127/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D128" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 437)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D128"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D128"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D128/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D129" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 436)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D129"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D129"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D129/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D130" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 410)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D130"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D130"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D130/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D131" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D131"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D131"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D131/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D132" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D132"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D132"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D132/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D133" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D133"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D133"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D133/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D134" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(413, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D134"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D134"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D134/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D135" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D135"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D135"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D135/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D136" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 410)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D136"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D136"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D136/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D137" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 360)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D137"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D137"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D137/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D138" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 335)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D138"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D138"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D138/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D139" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 310)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D139"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D139"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D139/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D140" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D140"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D140"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D140/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D141" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D141"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D141"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D141/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D146" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(387, 238)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D146"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D146"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D146/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D147" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(387, 213)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D147"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D147"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D147/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D148" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(387, 188)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D148"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D148"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D148/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D149" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(387, 163)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D149"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D149"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D149/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D150" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(413, 163)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D150"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D150"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D150/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D151" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 163)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D151"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D151"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D151/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D152" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 163)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D152"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D152"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D152/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D153" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 163)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D153"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D153"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D153/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D154" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 138)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D154"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D154"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D154/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D155" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(387, 138)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D155"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D155"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D155/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D156" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(387, 113)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D156"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D156"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D156/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D157" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(413, 113)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D157"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D157"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D157/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D158" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 112)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D158"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D158"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D158/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D159" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 112)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D159"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D159"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D159/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D160" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 113)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D160"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D160"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D160/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D161" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 88)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D161"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D161"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D161/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D162" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 63)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D162"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D162"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D162/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D163" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D163"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D163"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D163/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D164" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D164"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D164"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D164/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D165" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D165"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D165"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D165/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D166" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(413, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D166"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D166"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D166/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D167" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(390, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D167"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D167"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D167/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D168" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(387, 63)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D168"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D168"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D168/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D169" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(387, 88)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D169"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D169"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D169/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D142" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(412, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D142"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D142"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D142/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D143" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(437, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D143"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D143"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D143/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D144" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(462, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D144"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D144"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D144/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D145" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(488, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D145"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D145"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D145/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D67" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 436)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D67"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D67"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D67/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D68" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D68"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D68"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D68/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D69" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 410)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D69"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D69"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D69/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D70" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D70"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D70"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D70/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D71" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D71"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D71"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D71/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D72" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D72"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D72"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D72/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D73" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 360)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D73"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D73"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D73/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D108" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(362, 360)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D108"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D108"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D108/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D109" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(362, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D109"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D109"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D109/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D74" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 336)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D74"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D74"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D74/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D85" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 310)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D85"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D85"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D85/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D86" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D86"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D86"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D86/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D87" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D87"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D87"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D87/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D107" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(362, 261)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D107"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D107"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D107/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D88" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 238)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D88"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D88"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D88/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D89" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 213)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D89"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D89"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D89/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D90" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 213)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D90"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D90"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D90/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D91" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 213)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D91"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D91"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D91/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D92" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 188)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D92"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D92"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D92/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D93" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 163)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D93"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D93"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D93/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D94" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 163)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D94"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D94"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D94/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D95" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 163)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D95"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D95"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D95/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D96" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 138)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D96"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D96"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D96/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D97" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 113)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D97"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D97"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D97/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D98" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 113)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D98"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D98"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D98/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D99" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 112)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D99"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D99"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D99/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D100" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 88)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D100"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D100"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D100/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D101" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 63)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D101"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D101"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D101/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D102" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D102"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D102"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D102/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D103" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D103"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D103"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D103/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D104" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(337, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D104"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D104"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D104/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D105" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(362, 38)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D105"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D105"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D105/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D106" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(362, 112)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D106"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D106"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D106/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D75" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 336)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D75"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D75"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D75/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D76" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 335)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D76"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D76"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D76/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D77" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(262, 336)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D77"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D77"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D77/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D78" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(262, 310)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D78"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D78"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D78/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D79" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(262, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D79"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D79"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D79/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D80" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D80"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D80"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D80/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D81" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(312, 287)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D81"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D81"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D81/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D82" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(287, 263)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D82"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D82"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D82/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D56" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(213, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D56"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D56"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D56/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D57" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(187, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D57"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D57"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D57/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D58" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(163, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D58"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D58"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D58/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D43" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(238, 335)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D43"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D43"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D43/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D44" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(213, 336)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D44"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D44"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D44/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D10"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D10"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D10/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(113, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D11"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D11"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D11/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(88, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D12"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D12"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D12/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(63, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D13"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D13"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D13/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(38, 385)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D14"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D14"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D14/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(38, 410)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D15"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D15"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D15/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(38, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D16"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D16"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D16/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D17" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(63, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D17"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D17"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D17/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D18" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(87, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D18"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D18"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D18/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D19" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(88, 458)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D19"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D19"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D19/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D20" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(63, 458)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D20"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D20"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D20/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D21" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(63, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D21"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D21"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D21/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(88, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D22"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D22"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D22/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(38, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D23"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D23"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D23/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(113, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D24"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D24"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D24/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D25" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 485)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D25"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D25"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D25/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D26" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(38, 512)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D26"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D26"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D26/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D27" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(38, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D27"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D27"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D27/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D28" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(63, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D28"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D28"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D28/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D29" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(88, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D29"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D29"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D29/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D30" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(112, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D30"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D30"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D30/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D31" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 537)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D31"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D31"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D31/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D32" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 460)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D32"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D32"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D32/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D33" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 435)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D33"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D33"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D33/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="StaticBody2D34" type="StaticBody2D" parent="poins" groups=["points"]]
+position = Vector2(138, 410)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="poins/StaticBody2D34"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_tc374")
+
+[node name="Sprite2D" type="Sprite2D" parent="poins/StaticBody2D34"]
+texture = ExtResource("2_jk4cm")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="poins/StaticBody2D34/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7aspy")
+}
+autoplay = "move_candle"
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_0o5vs")]
+z_index = 10
+position = Vector2(466, 73)
+scale = Vector2(0.7, 0.7)
+collision_mask = 30
+
+[node name="scores" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = 304.0
+offset_right = 139.0
+offset_bottom = 339.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "SCORE : 0"
+
+[node name="heart" type="Node2D" parent="."]
+position = Vector2(9, 79)
+scale = Vector2(0.7, 0.7)
+
+[node name="heart one" type="Sprite2D" parent="heart"]
+position = Vector2(70, 270)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_lkndp")
+
+[node name="heart two" type="Sprite2D" parent="heart"]
+position = Vector2(160, 270)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_lkndp")
+
+[node name="heart three" type="Sprite2D" parent="heart"]
+position = Vector2(250, 270)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_lkndp")
+
+[node name="ghost" type="CharacterBody2D" parent="." groups=["ghost"]]
+z_index = 8
+position = Vector2(690, 368)
+scale = Vector2(0.4, 0.4)
+collision_layer = 8
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ghost"]
+texture = ExtResource("6_h1gvg")
+hframes = 3
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ghost/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_y77ro")
+}
+autoplay = "ghostLane"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ghost"]
+scale = Vector2(2.2, 2.2)
+shape = SubResource("CircleShape2D_xr7d1")
+
+[node name="radar" type="StaticBody2D" parent="ghost" groups=["radar"]]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ghost/radar"]
+scale = Vector2(30, 30)
+shape = SubResource("CircleShape2D_irs6s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ghost"]
+libraries = {
+"": SubResource("AnimationLibrary_sp75i")
+}
+autoplay = "ghostLane"
+
+[connection signal="body_entered" from="Player" to="." method="_on_player_body_entered"]
+[connection signal="body_exited" from="Player" to="." method="_on_player_body_exited"]

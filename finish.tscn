@@ -1,0 +1,238 @@
+[gd_scene load_steps=20 format=3 uid="uid://dimqix5v73t27"]
+
+[ext_resource type="Script" path="res://finish.gd" id="1_71khr"]
+[ext_resource type="FontFile" uid="uid://oi4xv6ciyiti" path="res://font/Rubik_Iso/RubikIso-Regular.ttf" id="1_sd48r"]
+[ext_resource type="AudioStream" uid="uid://cec45qngojfc0" path="res://aset/sound/click.mp3" id="2_f0vy1"]
+[ext_resource type="AudioStream" uid="uid://8xrkbn86qa35" path="res://aset/sound/Theme song.mp3" id="4_l1bei"]
+[ext_resource type="Texture2D" uid="uid://buead0r7tgpdn" path="res://aset/2 Animated objects/Pumpkin1.png" id="5_8vwv3"]
+[ext_resource type="Texture2D" uid="uid://u3cwlg4txct5" path="res://aset/2 Animated objects/Pumpkin2.png" id="6_o03d4"]
+[ext_resource type="Texture2D" uid="uid://b1xe1yvyi1pln" path="res://aset/furnitur/Web3.png" id="7_qnfib"]
+[ext_resource type="Texture2D" uid="uid://0d3nhl27ypwq" path="res://aset/furnitur/Web4.png" id="8_8h32n"]
+[ext_resource type="Texture2D" uid="uid://b6l72h4h5u1nu" path="res://aset/furnitur/Spider2.png" id="9_7d7s8"]
+[ext_resource type="Texture2D" uid="uid://cwjw6icb7mfjb" path="res://aset/furnitur/statue-removebg-preview.png" id="10_u2ycd"]
+[ext_resource type="Texture2D" uid="uid://cjctslfj8r5s6" path="res://aset/furnitur/wood-removebg-preview.png" id="11_17g7d"]
+[ext_resource type="Texture2D" uid="uid://b6sk4afh5yxip" path="res://aset/furnitur/Web5.png" id="12_bsjbc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cehxi"]
+bg_color = Color(0.745098, 0.745098, 0.745098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_bskbl"]
+resource_name = "pumpkin"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_lm6bu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5hp3"]
+_data = {
+"RESET": SubResource("Animation_lm6bu"),
+"pumpkin": SubResource("Animation_bskbl")
+}
+
+[sub_resource type="Animation" id="Animation_hrvii"]
+resource_name = "pumpkin"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_nvl54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mgtc"]
+_data = {
+"RESET": SubResource("Animation_nvl54"),
+"pumpkin": SubResource("Animation_hrvii")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(548, 350)
+script = ExtResource("1_71khr")
+
+[node name="border" type="ColorRect" parent="."]
+offset_left = -418.0
+offset_top = -215.0
+offset_right = -129.0
+offset_bottom = 45.0
+scale = Vector2(3, 1.5)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(1, 0, 0, 1)
+
+[node name="container" type="ColorRect" parent="."]
+offset_left = -410.0
+offset_top = -212.0
+offset_right = -127.0
+offset_bottom = 38.0
+scale = Vector2(3, 1.5)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.1667
+offset_top = -83.0
+offset_right = 57.8333
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_sd48r")
+theme_override_font_sizes/font_size = 33
+text = "FINISH"
+
+[node name="score" type="Label" parent="container"]
+layout_mode = 0
+offset_left = 81.3333
+offset_top = 102.0
+offset_right = 192.333
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_sd48r")
+text = "SCORE : 1090"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -103.0
+offset_top = 38.0
+offset_right = 108.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_sd48r")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_cehxi")
+text = "OK"
+
+[node name="clickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_f0vy1")
+volume_db = -5.0
+
+[node name="themeSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l1bei")
+parameters/looping = true
+
+[node name="Pumpkin1" type="Sprite2D" parent="."]
+position = Vector2(-195, 135)
+scale = Vector2(3, 3)
+texture = ExtResource("5_8vwv3")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pumpkin1"]
+libraries = {
+"": SubResource("AnimationLibrary_u5hp3")
+}
+autoplay = "pumpkin"
+
+[node name="Pumpkin2" type="Sprite2D" parent="."]
+position = Vector2(180, 134)
+scale = Vector2(3, 3)
+texture = ExtResource("6_o03d4")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pumpkin2"]
+libraries = {
+"": SubResource("AnimationLibrary_7mgtc")
+}
+autoplay = "pumpkin"
+
+[node name="Web3" type="Sprite2D" parent="."]
+position = Vector2(-331, -179)
+texture = ExtResource("7_qnfib")
+
+[node name="Web4" type="Sprite2D" parent="."]
+position = Vector2(-331, -125)
+texture = ExtResource("7_qnfib")
+
+[node name="Web5" type="Sprite2D" parent="."]
+position = Vector2(-331, -80)
+texture = ExtResource("7_qnfib")
+
+[node name="Web6" type="Sprite2D" parent="."]
+position = Vector2(-379, -173)
+scale = Vector2(3, 3)
+texture = ExtResource("8_8h32n")
+
+[node name="Spider2" type="Sprite2D" parent="."]
+position = Vector2(-330, -48)
+texture = ExtResource("9_7d7s8")
+
+[node name="Statue-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(378, 98)
+scale = Vector2(3, 3)
+texture = ExtResource("10_u2ycd")
+
+[node name="Wood-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(-387, 133)
+scale = Vector2(2, 2)
+texture = ExtResource("11_17g7d")
+offset = Vector2(2, 0)
+
+[node name="Wood-removebg-preview2" type="Sprite2D" parent="."]
+position = Vector2(-331, 133)
+scale = Vector2(2, 2)
+texture = ExtResource("11_17g7d")
+offset = Vector2(2, 0)
+
+[node name="Web7" type="Sprite2D" parent="."]
+position = Vector2(407, -174)
+scale = Vector2(5, 5)
+texture = ExtResource("12_bsjbc")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
