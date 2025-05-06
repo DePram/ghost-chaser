@@ -1,6 +1,7 @@
 Ghost Chaser Game
 ---------------------------------------------------------------
 - Modification of Pacman arcade game
+  > [!CAUTION]
   >Alert! This game contains jumpscare
 - Take a look --> https://depram.itch.io/ghost-chaser
 
