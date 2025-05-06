@@ -6,4 +6,4 @@ Ghost Chaser Game
 - Take a look --> https://depram.itch.io/ghost-chaser
 
 ## Give a ⭐ if this helps or you like it
-- 🐺⭐
+🐺⭐
